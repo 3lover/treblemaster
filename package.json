@@ -1,0 +1,34 @@
+{
+  "name": "TTR",
+  "version": "0.1.0",
+  "description": "Tonk Treble Remastered: the multiplayer shooter with too many settings.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "3love",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "latest",
+    "compression": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "express-ws": "latest",
+    "express-minify": "latest",
+    "an-array-of-english-words": "latest",
+    "jstat": "latest",
+    "matter-js": "^0.20.0",
+    "clone": "latest",
+    "discord": "latest"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+  },
+  "keywords": [
+    "tonk",
+    "treble"
+  ]
+}

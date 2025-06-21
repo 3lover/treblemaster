@@ -1,0 +1,1160 @@
+:root {
+    --black: #000000;
+    --veryDarkGrey: #333333;
+    --darkGrey: #555555;
+    --grey: #888888;
+    --lightGrey: #aaaaaa;
+    --veryLightGrey: #dddddd;
+    --white: #ffffff;
+    
+    --red: #ff0000;
+    --lightRed: #fa5f5f;
+    --veryLightRed: #ffb8b8;
+    --darkRed: #a80000;
+    --veryDarkRed: #690000;
+    --greyRed: #825b5b;
+    
+    --orange: #ff8800;
+    --lightOrange: #ffb663;
+    --veryLightOrange: #ffdeb8;
+    --darkOrange: #c26700;
+    --veryDarkOrange: #7a4100;
+    --greyOrange: #755a3b;
+    
+    --yellow: #ffff00;
+    --lightYellow: #ffff6e;
+    --veryLightYellow: #ffffc9;
+    --darkYellow: #a6a600;
+    --veryDarkYellow: #636300;
+    --greyYellow: #8c8c58;
+    
+    --green: #00ff00;
+    --lightGreen: #59ff59;
+    --veryLightGreen: #b8ffb8;
+    --darkGreen: #00ab00;
+    --veryDarkGreen: #005200;
+    --greyGreen: #608f60;
+    
+    --cyan: #00ffff;
+    --lightCyan: #6bffff;
+    --veryLightCyan: #baffff;
+    --darkCyan: #00b0b0;
+    --veryDarkCyan: #005c5c;
+    --greyCyan: #4f7878;
+    
+    --blue: #0000ff;
+    --lightBlue: #5c5cff;
+    --veryLightBlue: #c2d9ff;
+    --darkBlue: #0047ba;
+    --veryDarkBlue: #002259;
+    --greyBlue: #4b5d7a;
+    
+    --purple: #8800ff;
+    --lightPurple: #ad4fff;
+    --veryLightPurple: #deb8ff;
+    --darkPurple: #54009e;
+    --veryDarkPurple: #2e0057;
+    --greyPurple: #574369;
+    
+    --pink: #ff00ff;
+    --lightPink: #ff6bff;
+    --veryLightPink: #ffb8ff;
+    --darkPink: #bd00bd;
+    --veryDarkPink: #630063;
+    --greyPink: #784a78;
+  
+    --transitionTime: 0.2s;
+}
+
+@font-face {
+    font-family: 'Jetbrains Mono';
+    src: url('https://fonts.googleapis.com/css?family=JetBrains Mono');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", sans-serif;
+  user-select: none;
+  transition: var(--transitionTime);
+  box-shadow: none;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+*:focus {
+  outline: none;
+}
+
+body {
+  overflow: hidden;
+  background-color: var(--black);
+}
+
+img {
+  object-fit: contain;
+}
+
+option {
+  text-align: center;
+}
+select {
+  text-align: center;
+}
+
+canvas {
+  transition: 0;
+}
+
+/* the page classes */
+.page {
+  position: absolute;
+  
+  width: 100vw;
+  left: 0;
+  height: 100vh;
+  top: 0;
+}
+.settingspage {
+  left: -110vw;
+}
+.playpage {
+  left: 110vw;
+}
+
+.nodisplay {
+  display: none;
+}
+
+/* basic css */
+.largebox {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 38vmin;
+  height: 15vmin;
+  
+  font-size: 8vmin;
+  text-align: center;
+  
+  border: 1vmin solid var(--white);
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.hoverdark:hover {
+  background-color: var(--darkGrey);
+}
+.hoverdark:active {
+  background-color: var(--veryDarkGrey);
+}
+
+.emojifont {
+  font-family: 'Noto Emoji', sans-serif;
+}
+
+.notransitions {
+  transition: 0s !important;
+}
+
+.title {
+  width: 60vmin;
+  left: calc(50vmax - 10vmin);
+  top: 20vmin;
+}
+
+.backbutton {
+  left: calc(50vmax - 50vmin);
+  top: 20vmin;
+}
+
+.samelinecontainer {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* item specific css */
+.playbutton {
+  left: calc(50vmax - 50vmin);
+  top: 20vmin;
+}
+.settingsbutton {
+  left: calc(50vmax - 50vmin);
+  top: 40vmin;
+}
+.changelogsbutton {
+  left: calc(50vmax - 50vmin);
+  top: 60vmin;
+}
+
+.tonkimage {
+  width: 60vmin;
+  left: calc(50vmax - 10vmin);
+  height: 35vmin;
+  top: 40vmin;
+  
+  background-color: var(--white);
+}
+.tonkimgcaption {
+  position: absolute;
+  
+  width: 60vmin;
+  left: calc(50vmax - 10vmin);
+  top: 75vmin;
+  
+  font-size: 3vmin;
+  
+  color: var(--white);
+}
+
+.settingtab {
+  width: 25vmin;
+  top: 40vmin;
+}
+.settingsoundtab {
+  left: calc(50vmax - 50vmin);
+}
+.settinggraphictab {
+  left: calc(50vmax - 25vmin);
+}
+.settingmisctab {
+  left: calc(50vmax - 0vmin);
+}
+
+.settingcontent {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  overflow: scroll;
+  
+  width: 100vmin;
+  left: calc(50vmax - 50vmin);
+  height: 21vmin;
+  top: 54vmin;
+  
+  font-size: 3vmin;
+  
+  color: var(--white);
+}
+.settingtext {
+  display: flex;
+  margin-top: 1vmin;
+  
+  width: 30vmin;
+  height: 5vmin;
+  
+  justify-content: center;
+  font-size: 3vmin;
+  text-align: left;
+}
+.settingbar {
+  width: 100%;
+  text-align: left;
+  justify-content: left;
+}
+.settinginput {
+  margin-top: 1vmin;
+  margin-right: 5vmin;
+  
+  width: 45vmin;
+  height: 5vmin;
+  
+  overflow: scroll;
+  
+  text-align: center;
+  font-size: 3vmin;
+  
+  color: var(--white);
+  border-bottom: solid 0.5vmin var(--white);
+  background-color: var(--veryDarkGrey);
+}
+
+.nicknameinput {
+  left: calc(50vmax - 50vmin);
+  width: 100vmin;
+  height: 8vmin;
+  font-size: 6vmin;
+  top: 40vmin;
+}
+.lobbycodeinput {
+  left: calc(50vmax - 50vmin);
+  width: 100vmin;
+  height: 8vmin;
+  font-size: 6vmin;
+  top: 50vmin;
+}
+.joinbutton {
+  left: calc(50vmax - 50vmin);
+  width: 100vmin;
+  top: 60vmin;
+}
+
+.gamecanvas {
+  position: absolute;
+  top: 0;
+  left: -110vw;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-color: var(--white);
+}
+
+/* all the setting page stuff */
+.settingviewerholder {
+  position: absolute;
+  display: none;
+  
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  
+  z-index: 2;
+  
+  background-color: var(--black);
+  overflow: hidden;
+}
+
+.settingpagetopbar {
+  position: absolute;
+  display: block;
+  
+  width: 100vw;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  
+  border-top: solid 0.5vmin var(--white);
+  border-bottom: solid 0.5vmin var(--white);
+  
+  overflow: hidden;
+  
+  background-color: var(--black);
+}
+
+.settingpagexbutton {
+  position: absolute;
+  display: block;
+  
+  width: 15vw;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  
+  border-left: 0.5vmin solid var(--white);
+  border-right: 0.5vmin solid var(--white);
+  
+  font-size: 8vh;
+  color: var(--black);
+  
+  background-color: var(--red);
+}
+.settingpagexbutton:hover {
+  background-color: var(--darkRed);
+}
+.settingpagexbutton:active {
+  background-color: var(--veryDarkRed);
+}
+
+.settingpagesearchbutton {
+  position: absolute;
+  display: block;
+  
+  width: 10vw;
+  height: 10vh;
+  top: 0;
+  left: 15vw;
+  
+  font-size: 8vh;
+  color: var(--black);
+  
+  background-color: var(--lightBlue);
+}
+.settingpagesearchbutton:hover {
+  background-color: var(--darkBlue);
+}
+.settingpagesearchbutton:active {
+  background-color: var(--blue);
+}
+
+.settingpagesearchbar {
+  position: absolute;
+  display: block;
+  
+  width: 45vw;
+  height: 10vh;
+  top: 0;
+  left: 25vw;
+  
+  
+  font-size: 6vh;
+  color: var(--black);
+  
+  background-color: var(--grey);
+}
+.settingpagesearchbar:hover {
+  background-color: var(--darkGrey);
+}
+.settingpagesearchbar:focus {
+  background-color: var(--lightGrey);
+}
+
+.settingpagebackbutton {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 10vh;
+  top: 0;
+  left: 70vw;
+  
+  border-left: 0.5vmin solid var(--white);
+  border-right: 0.5vmin solid var(--white);
+  
+  font-size: 8vh;
+  text-align: left;
+  color: var(--white);
+  
+  background-color: var(--black);
+}
+.settingpagebackbutton:hover {
+  background-color: var(--veryDarkGrey);
+}
+.settingpagebackbutton:active {
+  background-color: var(--darkGrey);
+}
+
+.settingpageleftholder {
+  position: absolute;
+  display: block;
+  
+  width: 70vw;
+  height: 90vh;
+  top: 10vh;
+  left: 0;
+  
+  padding-bottom: 5vh;
+  
+  border-left: 0.5vmin solid var(--white);
+  border-bottom: 0.5vmin solid var(--white);
+
+  overflow-y: scroll;
+}
+.settingpagerightholder {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 90vh;
+  top: 10vh;
+  left: 70vw;
+  
+  border: 0.5vmin solid var(--white);
+  border-top: 0;
+}
+
+.settingpageapplychanges {
+  position: absolute;
+  display: block;
+  
+  background-color: var(--veryDarkOrange);
+  
+  width: 70vw;
+  height: 10vh;
+  top: 100vh;
+  left: 0;
+  
+  font-size: 6vh;
+  text-align: center;
+  color: var(--white);
+  
+  padding-bottom: 5vh;
+  
+  border-left: 0.5vmin solid var(--white);
+  border-bottom: 0.5vmin solid var(--white);
+
+  overflow: none;
+}
+
+.settingpagetext {
+  display: block;
+  position: relative;
+  
+  font-size: 4vh;
+  text-align: left;
+  color: var(--white);
+}
+
+.settingpagepowerupnotice {
+  text-align: center;
+  font-size: 8vh;
+}
+
+.settingpagetab {
+  display: flex;
+  position: relative;
+  
+  width: 60vw;
+  height: 15vh;
+  top: 0;
+  left: 5vw;
+  
+  margin-top: 5vh;
+  padding-right: 10vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  align-items: center;
+  
+  font-size: 6vh;
+  text-align: left;
+  color: var(--white);
+}
+
+.settingpagetabicon {
+  display: flex;
+  position: absolute;
+  
+  width: 10vw;
+  height: 15vh;
+  top: 0;
+  left: 50vw;
+  
+  align-items: center;
+  justify-content: center;
+  
+  background-color: transparent;
+  font-size: 6vh;
+  font-family: 'Noto Emoji', sans-serif;
+  text-align: center;
+  color: var(--white);
+}
+
+.tabblue {background-color: var(--blue);}
+.tabblue:hover {background-color: var(--darkBlue);}
+.tabblue:active {background-color: var(--veryDarkBlue);}
+.htabblue {background-color: var(--lightBlue);}
+.htabblue:hover {background-color: var(--blue);}
+.htabblue:active {background-color: var(--darkBlue);}
+
+.tabred {background-color: var(--red);}
+.tabred:hover {background-color: var(--darkRed);}
+.tabred:active {background-color: var(--veryDarkRed);}
+.htabred {background-color: var(--lightRed);}
+.htabred:hover {background-color: var(--red);}
+.htabred:active {background-color: var(--darkRed);}
+
+.tabgreen {background-color: var(--darkGreen);}
+.tabgreen:hover {background-color: var(--greyGreen);}
+.tabgreen:active {background-color: var(--veryDarkGreen);}
+.htabgreen {background-color: var(--lightGreen);}
+.htabgreen:hover {background-color: var(--darkGreen);}
+.htabgreen:active {background-color: var(--greyGreen);}
+
+.tabyellow {background-color: var(--darkYellow);}
+.tabyellow:hover {background-color: var(--greyYellow);}
+.tabyellow:active {background-color: var(--veryDarkYellow);}
+.htabyellow {background-color: var(--veryDarkYellow);}
+.htabyellow:hover {background-color: var(--darkYellow);}
+.htabyellow:active {background-color: var(--greyYellow);}
+
+.tabgrey {background-color: var(--grey);}
+.tabgrey:hover {background-color: var(--darkGrey);}
+.tabgrey:active {background-color: var(--veryDarkGrey);}
+.htabgrey {background-color: var(--lightGrey);}
+.htabgrey:hover {background-color: var(--grey);}
+.htabgrey:active {background-color: var(--darkGrey);}
+
+.tabpurple {background-color: var(--purple);}
+.tabpurple:hover {background-color: var(--darkPurple);}
+.tabpurple:active {background-color: var(--veryDarkPurple);}
+.htabpurple {background-color: var(--lightPurple);}
+.htabpurple:hover {background-color: var(--purple);}
+.htabpurple:active {background-color: var(--darkPurple);}
+
+.taborange {background-color: var(--orange);}
+.taborange:hover {background-color: var(--darkOrange);}
+.taborange:active {background-color: var(--veryDarkOrange);}
+.htaborange {background-color: var(--lightOrange);}
+.htaborange:hover {background-color: var(--orange);}
+.htaborange:active {background-color: var(--darkOrange);}
+
+.tabcyan {background-color: var(--darkCyan);}
+.tabcyan:hover {background-color: var(--greyCyan);}
+.tabcyan:active {background-color: var(--veryDarkCyan);}
+.htabcyan {background-color: var(--cyan);}
+.htabcyan:hover {background-color: var(--darkCyan);}
+.htabcyan:active {background-color: var(--greyCyan);}
+
+.tabpink {background-color: var(--pink);}
+.tabpink:hover {background-color: var(--darkPink);}
+.tabpink:active {background-color: var(--veryDarkPink);}
+.htabpink {background-color: var(--lightPink);}
+.htabpink:hover {background-color: var(--pink);}
+.htabpink:active {background-color: var(--darkPink);}
+
+.settingrightbutton {
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  
+  width: 20vw;
+  height: 12vh;
+  left: 5vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  font-size: 4vh;
+  text-align: center;
+  color: var(--white);
+  
+  background-color: var(--black);
+}
+.settingrightbutton:hover {
+  background-color: var(--veryDarkGrey);
+}
+.settingrightbutton:active {
+  background-color: var(--darkGrey);
+}
+.rightbutton1 {top: 25vh;}
+.rightbutton2 {top: 40vh;}
+.rightbutton3 {top: 55vh;}
+.rightbutton4 {top: 70vh;}
+.rightpartialinput {
+  width: 15vw;
+  top: 25vh;
+}
+.rightfullinput {
+  width: 20vw;
+  top: 25vh;
+}
+.rightpartialinputlabel {
+  align-items: center;
+  justify-content: center;
+  
+  width: 5vw;
+  top: 25vh;
+  left: 20vw;
+  border-left: none;
+}
+.rightpartialinputlabel:focus {
+  background-color: var(--darkGrey);
+}
+
+.disabledbutton {
+  border-color: var(--grey);
+  color: var(--grey);
+}
+
+.rightsettingtext {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 15vh;
+  left: 0;
+  top: 0;
+  
+  color: var(--white);
+  font-size: 4vh;
+  text-align: center;
+}
+
+
+.popuppage {
+  position: absolute;
+  display: none;
+  
+  width: 60vw;
+  height: 60vh;
+  top: 20vh;
+  left: 20vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  background-color: var(--black);
+  
+  z-index: 5;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+.popupcover {
+  position: absolute;
+  display: none;
+  
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  
+  opacity: 0.4;
+  
+  background-color: var(--black);
+  
+  z-index: 4;
+}
+.popuppagetitle {
+  color: var(--white);
+  font-size: 8vh;
+  text-align: center;
+  width: 100%;
+}
+.popuppagetext {
+  color: var(--white);
+  font-size: 4vh;
+  text-align: center;
+  width: 100%;
+}
+.popuppagebutton {
+  width: 50vw;
+  height: 6vh;
+  left: 5vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  font-size: 4vh;
+  text-align: center;
+  color: var(--white);
+  
+  background-color: var(--black);
+}
+.popuppagebutton:hover {
+  background-color: var(--veryDarkGrey);
+}
+.popuppagebutton:active {
+  background-color: var(--darkGrey);
+}
+
+.fullcoverpage {
+  position: absolute;
+  display: none;
+  
+  width: 1000vw;
+  height: 1000vh;
+  top: 0;
+  left: 0;
+  
+  background-color: var(--black);
+  
+  z-index: 3;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.editmenubackbutton {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 10vh;
+  top: 0;
+  left: 70vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  font-size: 8vh;
+  text-align: left;
+  color: var(--white);
+  
+  background-color: var(--black);
+}
+.editmenubackbutton:hover {
+  background-color: var(--veryDarkGrey);
+}
+.editmenubackbutton:active {
+  background-color: var(--darkGrey);
+}
+
+.editmenutitle {
+  position: absolute;
+  display: block;
+  
+  width: 70vw;
+  height: 10vh;
+  
+  border: 0.5vmin solid var(--white);
+  border-right: 0;
+  
+  font-size: 8vh;
+  text-align: left;
+  color: var(--white);
+  
+  background-color: var(--black);
+}
+
+.editpageholder {
+  position: absolute;
+  display: block;
+  
+  width: 100vw;
+  height: 90vh;
+  top: 10vh;
+  left: 0;
+  
+  padding-bottom: 5vh;
+  
+  border: 0.5vmin solid var(--white);
+  border-top: 0;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.editmenutab {
+  width: 90vw;
+}
+
+.inputholder {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 20vh;
+  
+  background-color: var(--black);
+}
+.issmenulabel {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 5vh;
+  top: 0;
+  left: 0;
+  
+  text-align: center;
+  font-size: 4vmin;
+  
+  color: var(--white);
+  background-color: var(--black);
+}
+.issmenuconstrainlabel {
+  top: 15vh;
+  color: var(--red);
+}
+.issmenu {
+  position: absolute;
+  display: block;
+  
+  width: 30vw;
+  height: 10vh;
+  top: 5vh;
+  left: 0;
+  
+  border: 0.5vmin solid var(--white);
+  
+  font-size: 6vmin;
+  text-align: center;
+  
+  color: var(--white);
+  background-color: var(--black);
+}
+.issmenu:hover {
+  background-color: var(--veryDarkGrey);
+}
+.issmenuinput:focus {
+  background-color: var(--darkGrey);
+}
+.issmenubutton:active {
+  background-color: var(--darkGrey);
+}
+
+.issmin {
+  top: 0;
+  left: 70vw;
+}
+.issmax {
+  top: 30vh;
+  left: 70vw;
+}
+.issround {
+  top: 60vh;
+  left: 70vw;
+}
+.issdistribution {
+  top: 60vh;
+  left: 5vw;
+}
+.issstrength {
+  top: 60vh;
+  left: 35vw;
+}
+
+.issgraph {
+  position: absolute;
+  display: block;
+  
+  width: 60vw;
+  height: 50vh;
+  top: 5vh;
+  left: 5vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.attachmentcanvas {
+  position: absolute;
+  display: block;
+  
+  width: 100vw;
+  height: 90vh;
+  top: 0;
+  left: 0;
+  
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.attachmentholder {
+  position: absolute;
+  display: block;
+  transition: 0s;
+  
+  width: 20vw;
+  
+  border: 0.5vmin solid var(--white);
+  
+  color: var(--white);
+  background-color: var(--black);
+  
+  overflow: hidden;
+}
+
+.attachmentgeneralholder {
+  top: 0vh;
+  left: 0vw;
+  height: 65vh;
+}
+.attachmenteditholder {
+  top: 45vh;
+  left: 80vw;
+  height: 45vh;
+}
+.attachmentaddholder {
+  top: 0vh;
+  left: 80vw;
+  height: 45vh;
+}
+
+.attachmentbutton {
+  position: static;
+  display: block;
+  
+  width: 20vw;
+  height: 10vh;
+  
+  border-bottom: 0.5vmin solid var(--white);
+  
+  text-align: center;
+  font-size: 3vh;
+  color: var(--white);
+  background-color: var(--black);
+}
+.attachmentbutton:hover {
+  background-color: var(--darkGrey);
+}
+.attachmentbutton:active {
+  background-color: var(--veryDarkGrey);
+}
+
+.attachmentgrabber {
+  height: 5vh;
+  text-align: center;
+  font-size: 4vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  color: var(--white);
+}
+
+.attachmentlayerinput {
+  position: absolute;
+  width: 10vw;
+  left: 10vw;
+}
+.attachmentlayerlabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  position: absolute;
+  width: 10vw;
+}
+
+.powerupbackpack {
+  position: absolute;
+  display: none;/*flex;*/
+  flex-direction: column;
+  left: 85vw;
+  top: 0;
+  width: 15vw;
+  height: 30vh;
+  background-color: var(--white);
+  opacity: 0.35;
+  color: var(--red);
+  overflow-y: scroll;
+}
+.powerupbackpack:hover {
+  opacity: 0.7;
+}
+.backpackitem {
+  width: 100%;
+  margin-top: 1vh;
+  color: var(--red);
+}
+.backpackitem:hover {
+  background-color: var(--lightGrey);
+  color: var(--white);
+}
+.backpackhider {
+  position: absolute;
+  display: none;
+  left: 84vw;
+  top: 12vh;
+  width: 1vw;
+  height: 6vh;
+  background-color: var(--white);
+  opacity: 0.2;
+}
+.backpackhider:hover {
+  opacity: 0.5;
+}
+
+.leaderboard {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  width: 15vw;
+  height: 30vh;
+  background-color: var(--white);
+  opacity: 0.35;
+  color: var(--red);
+  overflow-y: scroll;
+}
+.leaderboard:hover {
+  opacity: 0.7;
+}
+.leaderboardhider {
+  position: absolute;
+  display: none;
+  left: 15vw;
+  top: 12vh;
+  width: 1vw;
+  height: 6vh;
+  background-color: var(--white);
+  opacity: 0.2;
+}
+.leaderboardhider:hover {
+  opacity: 0.5;
+}
+
+.gametimer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 45vw;
+  top: 0;
+  width: 10vw;
+  font-size: 5vh;
+  text-align: center;
+  height: 6vh;
+  opacity: 0.5;
+  background-color: var(--white);
+  color: var(--black);
+  overflow: hidden;
+}
+
+.custommazeholder {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: var(--black);
+  color: var(--white);
+  display: none;
+}
+.custommazebar {
+  position: absolute;
+  width: 20vw;
+  height: 90vh;
+  left: 0;
+  top: 0;
+  border-right: solid 0.5vmin var(--white);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.secondbar {
+  left: 20vw;
+}
+.custommazetab {
+  width: 20vw;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vmin;
+  color: var(--white);
+  border-bottom: solid 0.5vmin var(--white);
+  text-align: center;
+}
+.bottommazetab {
+  position: absolute;
+  top: 82vh;
+  height: 8vh;
+}
+.custommazedescriptor {
+  width: 20vw;
+  height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vmin;
+  color: var(--white);
+  border-bottom: solid 0.5vmin var(--white);
+}
+.custommazecanvas {
+  position: absolute;
+  width: 60vw;
+  height: 90vh;
+  left: 40vw;
+  background-color: var(--white);
+}
+
+.howtoplay {
+  position: absolute;
+  left: 10vw;
+  width: 80vw;
+  top: -100vh;
+  height: 80vh;
+  background-color: var(--black);
+  border: 1vmin var(--white) solid;
+}
+
+.howtoplaybtn {
+  position: absolute;
+  width: 5vmin;
+  height: 5vmin;
+  left: 95vw;
+  top: 5vh;
+}
