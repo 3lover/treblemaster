@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tonk Treble</title>
+    <meta name="description" content="A tonk game by 3love">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://cdn.glitch.global/3a13eab7-d0e6-4339-8ea9-f53f38358054/d9eeb2f9-7ee9-469d-87d1-dc0eb1a15d54.image.png?v=1701973194784">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    
+    <!-- google font families -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=JetBrains Mono" rel="stylesheet">
+  </head>
+  
+  <body oncontextmenu="return false;">
+    <canvas id="shadowcutcanvas" class="gamecanvas"></canvas>
+    <canvas id="shadowmastercanvas" class="gamecanvas"></canvas>
+    <canvas id="maskcanvas" class="gamecanvas"></canvas>
+    <canvas id="gamecanvas" class="gamecanvas"></canvas>
+    
+    <!-- The powerup backpack, which lets you see and select what powerups you have in your backpack in-game -->
+    <div id="backpackhider" class="backpackhider"></div>
+    <div id="backpack" class="powerupbackpack">
+      <p>Backpack</p>
+    </div>
+    
+    <div id="leaderboardhider" class="leaderboardhider" style="opacity: 0"></div>
+    <div id="leaderboard" class="leaderboard" style="opacity: 0">
+      <p id="leaderboardtext"></p>
+    </div>
+    
+    <div id="gametimer" class="gametimer" style="opacity: 0">30.00</div>
+    
+    <div class="settingviewerholder" id="settingviewerholder">
+      <!-- The basic setting viewer, lets you see everything setting-wise -->
+      <div class="settingpagetopbar">
+        <button class="settingpagexbutton emojifont" id="settingpagexbutton">X</button>
+        <button class="settingpagesearchbutton emojifont" id="settingpagesearchbutton">🔎</button>
+        <input class="settingpagesearchbar" id="settingpagesearchbar">
+        <button class="settingpagebackbutton" id="settingpagebackbutton">Back</button>
+      </div>
+      <div class="settingpageleftholder" id="settingpageleftholder"></div>
+      <div class="settingpageapplychanges" id="settingpageapplychanges">Click here to apply changes</div>
+      <div class="settingpagerightholder" id="settingpagerightholder">
+        <p class="rightsettingtext" id="rightsettingtext"></p>
+        <button class="settingrightbutton rightbutton1" id="rightsettingbutton1"></button>
+        <button class="settingrightbutton rightbutton1" id="rightsettingselect"></button>
+        <input class="settingrightbutton rightpartialinput" id="rightsettingpartialinput" placeholder="Quick Set">
+        <div class="settingrightbutton rightpartialinputlabel" id="rightsettingpartialinputlabel"></div>
+        <input class="settingrightbutton rightfullinput" id="rightsettingfullinput" placeholder="Type Here">
+        <button class="settingrightbutton rightbutton2" id="rightsettingbutton2"></button>
+        <button class="settingrightbutton rightbutton3" id="rightsettingbutton3"></button>
+        <button class="settingrightbutton rightbutton4" id="rightsettingbutton4"></button>
+      </div>
+      
+      <!-- The edit menu that opens from the advanced editor -->
+      <div class="fullcoverpage" id="editmenupage">
+      <p class="editmenutitle" id="editmenutitle"></p>
+      <button class="editmenubackbutton" id="editmenubackbutton">Back</button>
+      <div class="editpageholder" id="editpageholder">
+        <!-- ISS editor parts -->
+        <div id="issminholder" class="issmin inputholder">
+          <p class="issmenulabel">Minimum Value</p>
+          <input id="issminvalue" class="issmenu issmenuinput" placeholder="Minimum">
+          <p class="issmenulabel issmenuconstrainlabel" id="issminconstrain">Constrained to 0</p>
+        </div>
+        <div id="issmaxholder" class="issmax inputholder">
+          <p class="issmenulabel">Maximum Value</p>
+          <input id="issmaxvalue" class="issmenu issmenuinput" placeholder="Maximum">
+          <p class="issmenulabel issmenuconstrainlabel" id="issmaxconstrain">Constrained to 1000000</p>
+        </div>
+        <div id="issroundholder" class="issround inputholder">
+          <p class="issmenulabel">Rounding Interval</p>
+          <input id="issroundvalue" class="issmenu issmenuinput" placeholder="Rounding">
+        </div>
+        <div id="issstrengthholder" class="issstrength inputholder">
+          <p class="issmenulabel">Distribution Strength</p>
+          <input id="issstrengthvalue" class="issmenu issmenuinput" placeholder="Strength">
+        </div>
+        <div id="issdistributionholder" class="issdistribution inputholder">
+          <p class="issmenulabel">Distribution Type</p>
+          <button id="issdistributionvalue" class="issmenu issmenubutton">Normal</button>
+        </div>
+        <canvas id="issgraph" class="issgraph"></canvas>
+        <!-- Attachments editor parts -->
+        <canvas id="attachmentcanvas" class="attachmentcanvas"></canvas>
+        <div class="attachmentholder attachmentgeneralholder" id="attachmentgeneralholder">
+          <button class="attachmentbutton" id="attachmentmakepremade">Save Attachment</button>
+          <button class="attachmentbutton" id="attachmentimportpremade">Load Attachment</button>
+          <button class="attachmentbutton" id="attachmentresetdraft">Reset Draft</button>
+          <button class="attachmentbutton" id="attachmenttogglesnap">Large Snap</button>
+          <button class="attachmentbutton" id="attachmentlockgrid">Lock Grid Size</button>
+          <button class="attachmentbutton" id="attachmentviewmode">Master View</button>
+          <div class="attachmentbutton attachmentgrabber" id="attachmentgeneralgrabber">✥</div>
+        </div>
+        <div class="attachmentholder attachmenteditholder" id="attachmenteditholder">
+          <select class="attachmentbutton" id="attachmentchangecolor"></select>
+          <div class="attachmentbutton">
+            <p class="attachmentbutton attachmentlayerlabel">Layer:</p>
+            <input class="attachmentbutton attachmentlayerinput" id="attachmentchangelayer" placeholder="Shape Layer">
+          </div>
+          <button class="attachmentbutton" id="attachmentchangeconnect">Hard Borders</button>
+          <button class="attachmentbutton" id="attachmentdeleteselected">Delete Selected</button>
+          <div class="attachmentbutton attachmentgrabber" id="attachmenteditgrabber">✥</div>
+        </div>
+        <div class="attachmentholder attachmentaddholder" id="attachmentaddholder">
+          <button class="attachmentbutton" id="attachmentaddcircle">Add Circle</button>
+          <button class="attachmentbutton" id="attachmentaddrectangle">Add Rectangle</button>
+          <button class="attachmentbutton" id="attachmentaddcustom">Add Custom</button>
+          <button class="attachmentbutton" id="attachmentaddsvg">Add SVG</button>
+          <div class="attachmentbutton attachmentgrabber" id="attachmentaddgrabber">✥</div>
+        </div>
+        <!-- Custom maze editor -->
+        <div class="custommazeholder" id="custommazeholder">
+          <div class="custommazebar" id="custommazebar"></div>
+          <div class="custommazebar secondbar">
+            <p class="custommazedescriptor" id="custommazewalltypesdesc">Wall Type</p>
+            <select class="custommazetab tabgrey" id="custommazewalltypes" style="display: none"></select>
+            <p class="custommazedescriptor" id="custommazespawnprioritydesc">Spawn Priority</p>
+            <input class="custommazetab tabgrey" id="custommazespawnpriority" placeholder="Spawn Priority">
+            <p class="custommazedescriptor" id="custommazexdesc">X Size</p>
+            <input class="custommazetab tabgrey" id="custommazex" placeholder="X Size">
+            <p class="custommazedescriptor" id="custommazeydesc">Y Size</p>
+            <input class="custommazetab tabgrey" id="custommazey" placeholder="Y Size">
+            <button class="custommazetab bottommazetab tabred" id="custommazedelete">Delete Maze</button>
+          </div>
+          <canvas class="custommazecanvas" id="custommazecanvas"></canvas>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <!-- The popup page that alerts the user to something and provides options to click -->
+    <div class="popupcover" id="popupcover"></div>
+    <div class="popuppage" id="popuppage">
+      <h1 class="popuppagetitle" id="popuppagetitle">Example Popup</h1>
+      <p class="popuppagetext" id="popuppagetext">This is an example of some of the warning or notification text one might expect</p>
+    </div>
+    
+    <div class="page" id="frontpage">
+      <h1 class="largebox title hoverdark" id="fronttitle">Tonk Treble</h1>
+      <button class="largebox playbutton hoverdark emojifont" id="playbutton">▶️</button>
+      <button class="largebox settingsbutton hoverdark emojifont" id="settingsbutton">⚙️</button>
+      <button class="largebox changelogsbutton hoverdark emojifont">📝</button>
+      <img class="largebox tonkimage" id="tonkimg" alt="Random Tonk Image" src="https://cdn.glitch.global/3a13eab7-d0e6-4339-8ea9-f53f38358054/df34e9c7-6d40-4672-a2d7-0ad11d49cee8.image.png?v=1701976261387">
+      <p class="tonkimgcaption" id="tonkimgcaption">Loading Image...</p>
+      <img src="https://cdn.glitch.global/3a13eab7-d0e6-4339-8ea9-f53f38358054/info%20(1).svg?v=1724510721890" class="howtoplaybtn" id="howtoplaybtn">
+    </div>
+    
+    <div class="page settingspage" id="settingspage">
+      <div class="holder settingsbar">
+        <h1 class="largebox title">Settings</h1>
+        <button class="largebox backbutton hoverdark emojifont" id="settingsbackbutton">🔙</button>
+        <div class="largebox settingtab hoverdark settingsoundtab emojifont" id="settingmusictab">⌨</div>
+        <div class="largebox holder settingcontent" id="settingmusiccontent">
+          <div class="samelinecontainer"><p class="settingtext">Forward Key:</p><button id="forwardkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Backward Key:</p><button id="backwardkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Right Key:</p><button id="rightkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Left Key:</p><button id="leftkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Fire Key:</p><button id="firekey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Start Game Key:</p><button id="enterkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Action Key:</p><button id="actionkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Unequip Key:</p><button id="unequipkey" class="settinginput"></button></div>
+          <div class="samelinecontainer"><p class="settingtext">Leave/Back Key:</p><button id="leavekey" class="settinginput"></button></div>
+        </div>
+        
+        <div class="largebox settingtab hoverdark settinggraphictab emojifont" id="settinggraphictab">👁️</div>
+        <div class="largebox holder settingcontent" id="settinggraphiccontent">
+          <div class="samelinecontainer">
+            <p class="settingtext">Theme:</p>
+            <select id="themeinput" class="settinginput">
+              <option value="dark">Dark Mode</option>
+              <option value="inverted">Inverted Mode</option>
+              <option value="darker">Darker Mode</option>
+              <option value="neon">Neon Mode</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="largebox settingtab hoverdark settingmisctab emojifont" id="settingmisctab">⭐</div>
+        <div class="largebox holder settingcontent" id="settingmisccontent">
+          <div class="samelinecontainer">
+            <p class="settingtext">Lerp Percentage:</p>
+            <input id="lerpinput" class="settinginput">
+          </div>
+          <div class="samelinecontainer">
+            <p class="settingtext settingbar">(100% = no lerp)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="page playpage" id="playpage">
+      <h1 class="largebox title hoverdark">Play</h1>
+      <button class="largebox backbutton hoverdark emojifont" id="playbackbutton">🔙</button>
+      <input class="largebox nicknameinput hoverdark" id="nicknameinput" placeholder="nickname">
+      <input class="largebox lobbycodeinput hoverdark" id="lobbycodeinput" placeholder="lobby id">
+      <button class="largebox joinbutton tabred emojifont" id="joinbutton">▶️</button>
+    </div>
+  </body>
+  
+  <script src="./animations.js" type="module"></script>
+  <script src="./util.js" type="module"></script>
+  <script src="./sendSettings.js" type="module"></script>
+  <script src="./settingHandler.js" type="module"></script>
+  <script src="./keynames.js" type="module" defer></script>
+  <script src="./index.js" type="module" defer></script>
+</html>
